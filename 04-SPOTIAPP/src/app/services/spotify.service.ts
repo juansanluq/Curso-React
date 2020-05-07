@@ -12,7 +12,7 @@ export class SpotifyService {
   private CLIENT_SECRET = '450787fbf34e4a7689b096960b4655cd';
   private token: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private getToken(): Promise<string> {
     return new Promise((resolve) => {
@@ -66,5 +66,9 @@ export class SpotifyService {
         );
       }
     );
+  }
+
+  public getArtistInfo(id: string): Promise<Observable<any>> {
+    return this.getQuery(`/artists/${id}`);
   }
 }
